@@ -33,14 +33,12 @@ for god in gods:
 
 
 def LoadStats(filePath):
-    file = open(filePath, "r")
-    allLines = file.readlines()
+    allLines = open(filePath, "r").readlines()
     allLines.pop(0)
     allLines.pop(0)
 
     for line in allLines:
-        currLine = line.strip()
-        splitLine = currLine.split('|')
+        splitLine = line.strip().split('|')
         for god in poh:
             if god.name == splitLine[0]:
                 god.attempt_count = float(splitLine[1])
@@ -84,27 +82,27 @@ def AddRun():
     print("Please enter the full name of the god.\n")
 
     while True:
-        run_ender = input("Which god killed you?: ").lower()
+        action = input("Enter action or the name of the god who killed you.: ").lower()
 
-        if run_ender == "stats":
+        if action == "stats":
             PrintData()
             continue
-        elif run_ender == "save":
+        elif action == "save":
             filePath = input("Please provide a file path: ")
             SaveStats(filePath)
             continue
-        elif run_ender == "load":
+        elif action == "load":
             filePath = input("Please provide a file path: ")
             LoadStats(filePath)
             continue
-        elif run_ender == "reset":
+        elif action == "reset":
             for god in poh:
                 god.attempt_count = 0.0
                 god.success_count = 0.0
                 god.success_rate = 0.0
             print("Data reset successfully.\n")
             continue
-        elif run_ender == 'q':
+        elif action == 'q':
             save = input("Would you like to save before quitting? (y/n): ")
             while save != 'y' and save != 'n':
                 print("Error: Invalid input. Please try again.\n")
@@ -117,7 +115,7 @@ def AddRun():
         god_exists = False
 
         for god in poh:
-            if god.name.lower() == run_ender:
+            if god.name.lower() == action:
                 god_exists = True
 
         if not god_exists:
@@ -125,13 +123,13 @@ def AddRun():
             continue
 
         for god in poh:
-            god.attempt_count = god.attempt_count + 1
-            if god.name.lower() != run_ender:
-                god.success_count = god.success_count + 1
+            god.attempt_count += 1
+            if god.name.lower() != action:
+                god.success_count += 1
             else:
                 break
 
-        print("\nYou have died to %s. Successfully updated data.\n" % run_ender)
+        print("\nYou have died to %s. Successfully updated data.\n" % action)
 
 
 def PrintData():
