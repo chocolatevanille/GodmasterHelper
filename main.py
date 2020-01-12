@@ -77,6 +77,8 @@ def AddRun():
 
     print("To reset data, type reset.\n")
 
+    print("To view your data, type stats.\n")
+
     print("To quit, type q.\n")
 
     print("Please enter the full name of the god.\n")
