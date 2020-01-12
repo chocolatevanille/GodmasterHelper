@@ -1,6 +1,7 @@
 # PantheonofHallownestTracker
 This tool will allow you to keep track of the number of attempts and successes, as well as your success rate of each god
-when attempting the Pantheon of Hallownest.
+when attempting the Pantheon of Hallownest. For each run, enter the name of the god to whom you died. The code will
+update the rest of the data.
 
 The program works as follows:
 
