@@ -116,6 +116,8 @@ def AddRun():
 
     print("To reset data, type reset.\n")
 
+    print("To quit, type q.\n")
+
     print("Please enter the full name of the god.\n")
 
     while True:
