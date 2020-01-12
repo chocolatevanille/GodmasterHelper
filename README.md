@@ -13,4 +13,4 @@ died. This will update the current stats. Enter 'save' to save your data to a fi
 a file. Enter 'stats' to view your current stats. Enter 'reset' to rest your current stats. Enter 'q' to quit.
 
 That's it. Not much to it. This code was written by a bored CS student in about an hour, so it won't handle errors
-well and functionality is limited. 
+well and functionality is limited.

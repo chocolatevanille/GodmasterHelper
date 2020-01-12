@@ -18,55 +18,18 @@ class GodStats:
               (self.name, self.attempt_count, self.success_count, self.success_rate))
 
 
-vengefly_king = GodStats('Vengefly King')
-gruz_mother = GodStats('Gruz Mother')
-false_knight = GodStats('False Knight')
-massive_moss_charger = GodStats('Massive Moss Charger')
-hornet_protector = GodStats('Hornet Protector')
-gorb = GodStats('Gorb')
-dung_defender = GodStats('Dung Defender')
-soul_warrior = GodStats('Soul Warrior')
-brooding_mawlek = GodStats('Brooding Mawlek')
-brothers = GodStats('Brothers Oro and Mato')
-xero = GodStats('Xero')
-crystal_guardian = GodStats('Crystal Guardian')
-soul_master = GodStats('Soul Master')
-oblobbles = GodStats('Oblobbles')
-sisters_of_battle = GodStats('Sisters of Battle')
-marmu = GodStats('Marmu')
-flukemarm = GodStats('Flukemarm')
-broken_vessel = GodStats('Broken Vessel')
-galien = GodStats('Galien')
-paintmaster_sheo = GodStats('Paintmaster Sheo')
-hive_knight = GodStats('Hive Knight')
-elder_hu = GodStats('Elder Hu')
-the_collector = GodStats('The Collector')
-god_tamer = GodStats('God Tamer')
-troupe_master_grimm = GodStats('Troupe Master Grimm')
-watcher_knight = GodStats('Watcher Knight')
-uumuu = GodStats('Uumuu')
-winged_nosk = GodStats('Winged Nosk')
-great_nailsage_sly = GodStats('Great Nailsage Sly')
-hornet_sentinel = GodStats('Hornet Sentinel')
-enraged_guardian = GodStats('Enraged Guardian')
-lost_kin = GodStats('Lost Kin')
-no_eyes = GodStats('No Eyes')
-traitor_lord = GodStats('Traitor Lord')
-white_defender = GodStats('White Defender')
-soul_tyrant = GodStats('Soul Tyrant')
-markoth = GodStats('Markoth')
-grey_prince_zote = GodStats('Grey Prince Zote')
-failed_champion = GodStats('Failed Champion')
-nightmare_king_grimm = GodStats('Nightmare King Grimm')
-pure_vessel = GodStats('Pure Vessel')
-absolute_radiance = GodStats('Absolute Radiance')
+gods = ['Vengefly King', 'Gruz Mother', 'False Knight', 'Massive Moss Charger', 'Hornet Protector', 'Gorb',
+        'Dung Defender', 'Soul Warrior', 'Brooding Mawlek', 'Brothers Oro and Mato', 'Xero', 'Crystal Guardian',
+        'Soul Master', 'Oblobbles', 'Sisters of Battle', 'Marmu', 'Flukemarm', 'Broken Vessel', 'Galien',
+        'Paintmaster Sheo', 'Hive Knight', 'Elder Hu', 'The Collector', 'God Tamer', 'Troupe Master Grimm',
+        'Watcher Knight', 'Uumuu', 'Winged Nosk', 'Great Nailsage Sly', 'Hornet Sentinel', 'Enraged Guardian',
+        'Lost Kin', 'No Eyes', 'Traitor Lord', 'White Defender', 'Soul Tyrant', 'Markoth', 'Grey Prince Zote',
+        'Failed Champion', 'Nightmare King Grimm', 'Pure Vessel', 'Absolute Radiance']
 
-poh = [vengefly_king, gruz_mother, false_knight, massive_moss_charger, hornet_protector, gorb, dung_defender,
-       soul_warrior, brooding_mawlek, brothers, xero, crystal_guardian, soul_master, oblobbles, sisters_of_battle,
-       marmu, flukemarm, broken_vessel, galien, paintmaster_sheo, hive_knight, elder_hu, the_collector, god_tamer,
-       troupe_master_grimm, watcher_knight, uumuu, winged_nosk, great_nailsage_sly, hornet_sentinel, enraged_guardian,
-       lost_kin, no_eyes, traitor_lord, white_defender, soul_tyrant, markoth, grey_prince_zote, failed_champion,
-       nightmare_king_grimm, pure_vessel, absolute_radiance]
+poh = []
+
+for god in gods:
+    poh.append(GodStats(god))
 
 
 def LoadStats(filePath):
@@ -173,7 +136,7 @@ def AddRun():
 
 def PrintData():
 
-    print("\nTotal Attempts: %d\n" % vengefly_king.attempt_count)
+    print("\nTotal Attempts: %d\n" % poh[0].attempt_count)
 
     for god in poh:
         god.UpdateSuccessRate()
