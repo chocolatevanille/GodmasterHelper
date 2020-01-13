@@ -1,5 +1,6 @@
 # Author: willster191
-# For help, contact: willster191 on Reddit or willster#1886 on Discord
+# For help, contact willster191 on Reddit or willster#1886 on Discord
+
 
 class GodStats:
     attempt_count = 0.0
@@ -9,11 +10,11 @@ class GodStats:
     def __init__(self, name):
         self.name = name
 
-    def UpdateSuccessRate(self):
+    def update_success_rate(self):
         if self.attempt_count != 0.0:
             self.success_rate = self.success_count / self.attempt_count
 
-    def PrintStats(self):
+    def print_stats(self):
         print("Name: %s | Attempts: %d | Successes: %d | Success Rate: %f\n" %
               (self.name, self.attempt_count, self.success_count, self.success_rate))
 
@@ -32,62 +33,61 @@ for god in gods:
     poh.append(GodStats(god))
 
 
-def LoadStats(filePath):
-    newFilePath = filePath
+def load_stats(file_path):
     while True:
         try:
-            allLines = open(newFilePath, "r").readlines()
-            allLines.pop(0)
-            allLines.pop(0)
+            all_lines = open(file_path, "r").readlines()
+            all_lines.pop(0)
+            all_lines.pop(0)
 
-            for line in allLines:
-                splitLine = line.strip().split('|')
+            for line in all_lines:
+                split_line = line.strip().split('|')
                 for god in poh:
-                    if god.name == splitLine[0]:
-                        god.attempt_count = float(splitLine[1])
-                        god.success_count = float(splitLine[2])
-                        god.success_rate = float(splitLine[3])
+                    if god.name == split_line[0]:
+                        god.attempt_count = float(split_line[1])
+                        god.success_count = float(split_line[2])
+                        god.success_rate = float(split_line[3])
                         continue
 
             print("Data loaded successfully.\n")
             break
         except OSError:
             print("File does not exist.\n")
-            newFilePath = input("Please try again or enter q to return.: ")
-            if newFilePath == 'q':
+            file_path = input("Please try again or enter q to return.: ")
+            if file_path == 'q':
                 break
 
 
-def SaveStats(filePath):
-    newFilePath = filePath
+def save_stats(file_path):
     while True:
         try:
-            file = open(filePath, "w")
+            file = open(file_path, "w")
             file.write("Pantheon of Hallownest Progression Data\n")
             file.write("God|Attempts|Successes|Rate of Success\n")
             for god in poh:
+                god.update_success_rate()
                 file.write("%s|%d|%d|%f\n" % (god.name, god.attempt_count, god.success_count, god.success_rate))
 
             print("Data saved successfully.\n")
             break
         except OSError:
             print("Invalid path.\n")
-            newFilePath = input("Please try again or enter q to return.: ")
-            if newFilePath == 'q':
+            file_path = input("Please try again or enter q to return.: ")
+            if file_path == 'q':
                 break
 
 
-def AddRun():
+def add_run():
 
     load_data = input("Would you like to load data? (y/n): ")
 
-    if load_data == 'y':
-        filePath = input("Please provide a file path: ")
-        LoadStats(filePath)
-    elif load_data != 'n':
-        print("Error: Invalid input. Please try again.\n")
-        AddRun()
-        return
+    while True:
+        if load_data == 'y':
+            file_path = input("Please provide a file path: ")
+            load_stats(file_path)
+            break
+        elif load_data != 'n':
+            print("Error: Invalid input. Please try again.\n")
 
     print("\nTo save your data to a file, type save.\n")
 
@@ -97,6 +97,8 @@ def AddRun():
 
     print("To view your data, type stats.\n")
 
+    print("To record a successful completion of PoH, type success.\n")
+
     print("To quit, type q.\n")
 
     print("Please enter the full name of the god.\n")
@@ -105,15 +107,15 @@ def AddRun():
         action = input("Enter action or the name of the god who killed you.: ").lower()
 
         if action == "stats":
-            PrintData()
+            print_data()
             continue
         elif action == "save":
-            filePath = input("Please provide a file path: ")
-            SaveStats(filePath)
+            file_path = input("Please provide a file path: ")
+            save_stats(file_path)
             continue
         elif action == "load":
-            filePath = input("Please provide a file path: ")
-            LoadStats(filePath)
+            file_path = input("Please provide a file path: ")
+            load_stats(file_path)
             continue
         elif action == "reset":
             for god in poh:
@@ -122,14 +124,19 @@ def AddRun():
                 god.success_rate = 0.0
             print("Data reset successfully.\n")
             continue
+        elif action == 'success':
+            for god in poh:
+                god.attempt_count += 1
+                god.success_count += 1
+            print("You have ascended. Congratulations!\n")
         elif action == 'q':
             save = input("Would you like to save before quitting? (y/n): ")
             while save != 'y' and save != 'n':
                 print("Error: Invalid input. Please try again.\n")
                 save = input("Would you like to save before quitting? (y/n): ")
             if save == 'y':
-                filePath = input("Please provide a file path: ")
-                SaveStats(filePath)
+                file_path = input("Please provide a file path: ")
+                save_stats(file_path)
             break
 
         god_exists = False
@@ -140,6 +147,7 @@ def AddRun():
 
         if not god_exists:
             print("\nThis god does not exist. Please write out the god's full name.\n")
+            print("If you are unsure how to spell a god's name, type stats.\n")
             continue
 
         for god in poh:
@@ -152,18 +160,18 @@ def AddRun():
         print("\nYou have died to %s. Successfully updated data.\n" % action)
 
 
-def PrintData():
+def print_data():
 
     print("\nTotal Attempts: %d\n" % poh[0].attempt_count)
 
     for god in poh:
-        god.UpdateSuccessRate()
-        god.PrintStats()
+        god.update_success_rate()
+        god.print_stats()
 
 
 def main():
     print()
-    AddRun()
+    add_run()
 
 
 if __name__ == "__main__":
