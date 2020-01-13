@@ -88,6 +88,8 @@ def add_run():
             break
         elif load_data != 'n':
             print("Error: Invalid input. Please try again.\n")
+        else:
+            break
 
     print("\nTo save your data to a file, type save.\n")
 
