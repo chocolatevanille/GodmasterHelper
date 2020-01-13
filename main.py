@@ -33,30 +33,48 @@ for god in gods:
 
 
 def LoadStats(filePath):
-    allLines = open(filePath, "r").readlines()
-    allLines.pop(0)
-    allLines.pop(0)
+    newFilePath = filePath
+    while True:
+        try:
+            allLines = open(newFilePath, "r").readlines()
+            allLines.pop(0)
+            allLines.pop(0)
 
-    for line in allLines:
-        splitLine = line.strip().split('|')
-        for god in poh:
-            if god.name == splitLine[0]:
-                god.attempt_count = float(splitLine[1])
-                god.success_count = float(splitLine[2])
-                god.success_rate = float(splitLine[3])
-                continue
+            for line in allLines:
+                splitLine = line.strip().split('|')
+                for god in poh:
+                    if god.name == splitLine[0]:
+                        god.attempt_count = float(splitLine[1])
+                        god.success_count = float(splitLine[2])
+                        god.success_rate = float(splitLine[3])
+                        continue
 
-    print("Data loaded successfully.\n")
+            print("Data loaded successfully.\n")
+            break
+        except OSError:
+            print("File does not exist.\n")
+            newFilePath = input("Please try again or enter q to return.: ")
+            if newFilePath == 'q':
+                break
 
 
 def SaveStats(filePath):
-    file = open(filePath, "w")
-    file.write("Pantheon of Hallownest Progression Data\n")
-    file.write("God|Attempts|Successes|Rate of Success\n")
-    for god in poh:
-        file.write("%s|%d|%d|%f\n" % (god.name, god.attempt_count, god.success_count, god.success_rate))
+    newFilePath = filePath
+    while True:
+        try:
+            file = open(filePath, "w")
+            file.write("Pantheon of Hallownest Progression Data\n")
+            file.write("God|Attempts|Successes|Rate of Success\n")
+            for god in poh:
+                file.write("%s|%d|%d|%f\n" % (god.name, god.attempt_count, god.success_count, god.success_rate))
 
-    print("Data saved successfully.\n")
+            print("Data saved successfully.\n")
+            break
+        except OSError:
+            print("Invalid path.\n")
+            newFilePath = input("Please try again or enter q to return.: ")
+            if newFilePath == 'q':
+                break
 
 
 def AddRun():
