@@ -78,7 +78,6 @@ def save_stats(file_path):
 
 
 def add_run():
-
     load_data = input("Would you like to load data? (y/n): ")
 
     while True:
@@ -108,18 +107,18 @@ def add_run():
     while True:
         action = input("Enter action or the name of the god who killed you.: ").lower()
 
-        if action == "stats":
+        if action == 'stats':
             print_data()
             continue
-        elif action == "save":
+        elif action == 'save':
             file_path = input("Please provide a file path: ")
             save_stats(file_path)
             continue
-        elif action == "load":
+        elif action == 'load':
             file_path = input("Please provide a file path: ")
             load_stats(file_path)
             continue
-        elif action == "reset":
+        elif action == 'reset':
             for god in poh:
                 god.attempt_count = 0.0
                 god.success_count = 0.0
@@ -131,6 +130,7 @@ def add_run():
                 god.attempt_count += 1
                 god.success_count += 1
             print("You have ascended. Congratulations!\n")
+            continue
         elif action == 'q':
             save = input("Would you like to save before quitting? (y/n): ")
             while save != 'y' and save != 'n':
@@ -141,13 +141,7 @@ def add_run():
                 save_stats(file_path)
             break
 
-        god_exists = False
-
-        for god in poh:
-            if god.name.lower() == action:
-                god_exists = True
-
-        if not god_exists:
+        if not any([god for god in poh if god.name.lower() == action]):
             print("\nThis god does not exist. Please write out the god's full name.\n")
             print("If you are unsure how to spell a god's name, type stats.\n")
             continue
@@ -163,7 +157,6 @@ def add_run():
 
 
 def print_data():
-
     print("\nTotal Attempts: %d\n" % poh[0].attempt_count)
 
     for god in poh:
@@ -178,4 +171,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
