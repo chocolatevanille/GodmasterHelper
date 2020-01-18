@@ -34,23 +34,42 @@ for god in gods:
 
 
 def load_stats(file_path):
+
+    overwrite = input("Would you like to overwrite your current data? (y/n): ")
+
+    while True:
+        if overwrite != 'y' and overwrite != 'n':
+            print("Error: Invalid input. Please try again.\n")
+            overwrite = input("Would you like to overwrite your current data? (y/n): ")
+        else:
+            break
+
     while True:
         try:
             all_lines = open(file_path, "r").readlines()
             all_lines.pop(0)
             all_lines.pop(0)
 
-            for line in all_lines:
-                split_line = line.strip().split('|')
-                for god in poh:
-                    if god.name == split_line[0]:
-                        god.attempt_count = float(split_line[1])
-                        god.success_count = float(split_line[2])
-                        god.success_rate = float(split_line[3])
-                        continue
-
-            print("Data loaded successfully.\n")
-            break
+            if overwrite == 'y':
+                for line in all_lines:
+                    split_line = line.strip().split('|')
+                    for god in poh:
+                        if god.name == split_line[0]:
+                            god.attempt_count = float(split_line[1])
+                            god.success_count = float(split_line[2])
+                            god.success_rate = float(split_line[3])
+                print("\nData successfully loaded. Previous data overwritten.")
+                break
+            else:
+                for line in all_lines:
+                    split_line = line.strip().split('|')
+                    for god in poh:
+                        if god.name == split_line[0]:
+                            god.attempt_count += float(split_line[1])
+                            god.success_count += float(split_line[2])
+                            god.update_success_rate()
+                print("\nData successfully integrated.")
+                break
         except OSError:
             print("File does not exist.\n")
             file_path = input("Please try again or enter q to return.: ")
@@ -87,6 +106,7 @@ def add_run():
             break
         elif load_data != 'n':
             print("Error: Invalid input. Please try again.\n")
+            load_data = input("Would you like to load data? (y/n): ")
         else:
             break
 
