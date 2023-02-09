@@ -11,4 +11,6 @@ rest of the data.
 You can load and save your data as .txt files. They are in a human readable format on purpose, but please do not
 edit them. Changing the data may result in problems importing it back into the program.  
 
+Future goals: Extend to all pantheons and then Hall of Gods.  
+
 Made with PySimpleGUI.  
