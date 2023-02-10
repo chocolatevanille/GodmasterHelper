@@ -1,7 +1,7 @@
 # GodmasterHelper
 
 Author: Noëlle Barron  
-Github: https://github.com/chocolatevanille/PantheonofHallownestTracker  
+Github: https://github.com/chocolatevanille/GodmasterHelper   
 For help or bug reports, contact william.c.b.19@gmail.com. Willing to add features on request.  
 
 This tool will allow you to keep track of your progress through the various pantheons in Hollow Knight's  
