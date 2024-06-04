@@ -1,6 +1,6 @@
 # GodmasterHelper
 
-Author: Noëlle Barron  
+Author: Noël Barron  
 Github: https://github.com/chocolatevanille/GodmasterHelper   
 For help or bug reports, contact william.c.b.19@gmail.com. Willing to add features on request.  
 
