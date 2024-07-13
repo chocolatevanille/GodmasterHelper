@@ -412,58 +412,24 @@ def change_badge(curr_god):
 # Hall of Gods display
 # called when user clicks on Hall of Gods button
 def display_HoG():
+    boss_names = [
+            ['Gruz Mother', 'Vengefly King', 'Brooding Mawlek', 'False Knight', 'Failed Champion', 'Hornet Protector', 'Hornet Sentinel', 'Massive Moss Charger', 'Flukemarm', 'Mantis Lords', 'Sisters of Battle'],
+            ['Oblobble', 'Hive Knight', 'Broken Vessel', 'Lost Kin', 'Nosk', 'Winged Nosk', 'The Collector', 'God Tamer', 'Crystal Guardian', 'Enraged Guardian', 'Uumuu'],
+            ['Traitor Lord', 'Grey Prince Zote', 'Soul Warrior', 'Soul Master', 'Soul Tyrant', 'Dung Defender', 'White Defender', 'Watcher Knight', 'No Eyes', 'Marmu', 'Galien'],
+            ['Markoth', 'Xero', 'Gorb', 'Elder Hu', 'Oro and Mato', 'Paintmaster Sheo', 'Nailsage Sly', 'Pure Vessel', 'Grimm', 'Nightmare King', 'Radiance']
+        ]
+        
     layout = [
         [gui.Text('Hall of Gods')],
-        [gui.Text('',key='-STATUS-')],
-        [gui.Column([[gui.Button(image_source=get_badge('Gruz Mother'),key='-GRUZ-MOTHER-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Gruz Mother')],
-                    [gui.Button(image_source=get_badge('Vengefly King'),key='-VENGEFLY-KING-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Vengefly King')],
-                    [gui.Button(image_source=get_badge('Brooding Mawlek'),key='-BROODING-MAWLEK-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Brooding Mawlek')],
-                    [gui.Button(image_source=get_badge('False Knight'),key='-FALSE-KNIGHT-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('False Knight')],
-                    [gui.Button(image_source=get_badge('Failed Champion'),key='-FAILED-CHAMPION-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Failed Champion')],
-                    [gui.Button(image_source=get_badge('Hornet Protector'),key='-HORNET-PROTECTOR-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Hornet Protector')],
-                    [gui.Button(image_source=get_badge('Hornet Sentinel'),key='-HORNET-SENTINEL-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Hornet Sentinel')],
-                    [gui.Button(image_source=get_badge('Massive Moss Charger'),key='-MASSIVE-MOSS-CHARGER-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Massive Moss Charger')],
-                    [gui.Button(image_source=get_badge('Flukemarm'),key='-FLUKEMARM-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Flukemarm')],
-                    [gui.Button(image_source=get_badge('Mantis Lords'),key='-MANTIS-LORDS-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Mantis Lords')],
-                    [gui.Button(image_source=get_badge('Sisters of Battle'),key='-SISTERS-OF-BATTLE-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Sisters of Battle')]],
-                    justification='left'),
-        gui.Column([[gui.Button(image_source=get_badge('Oblobble'),key='-OBLOBBLE-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Oblobble')],
-                    [gui.Button(image_source=get_badge('Hive Knight'),key='-HIVE-KNIGHT-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Hive Knight')],
-                    [gui.Button(image_source=get_badge('Broken Vessel'),key='-BROKEN-VESSEL-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Broken Vessel')],
-                    [gui.Button(image_source=get_badge('Lost Kin'),key='-LOST-KIN-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Lost Kin')],
-                    [gui.Button(image_source=get_badge('Nosk'),key='-NOSK-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Nosk')],
-                    [gui.Button(image_source=get_badge('Winged Nosk'),key='-WINGED-NOSK-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Winged Nosk')],
-                    [gui.Button(image_source=get_badge('The Collector'),key='-THE-COLLECTOR-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('The Collector')],
-                    [gui.Button(image_source=get_badge('God Tamer'),key='-GOD-TAMER-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('God Tamer')],
-                    [gui.Button(image_source=get_badge('Crystal Guardian'),key='-CRYSTAL-GUARDIAN-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Crystal Guardian')],
-                    [gui.Button(image_source=get_badge('Enraged Guardian'),key='-ENRAGED-GUARDIAN-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Enraged Guardian')],
-                    [gui.Button(image_source=get_badge('Uumuu'),key='-UUMUU-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Uumuu')]],
-                    justification='left'),
-        gui.Column([[gui.Button(image_source=get_badge('Traitor Lord'),key='-TRAITOR-LORD-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Traitor Lord')],
-                    [gui.Button(image_source=get_badge('Grey Prince Zote'),key='-GREY-PRINCE-ZOTE-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Grey Prince Zote')],
-                    [gui.Button(image_source=get_badge('Soul Warrior'),key='-SOUL-WARRIOR-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Soul Warrior')],
-                    [gui.Button(image_source=get_badge('Soul Master'),key='-SOUL-MASTER-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Soul Master')],
-                    [gui.Button(image_source=get_badge('Soul Tyrant'),key='-SOUL-TYRANT-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Soul Tyrant')],
-                    [gui.Button(image_source=get_badge('Dung Defender'),key='-DUNG-DEFENDER-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Dung Defender')],
-                    [gui.Button(image_source=get_badge('White Defender'),key='-WHITE-DEFENDER-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('White Defender')],
-                    [gui.Button(image_source=get_badge('Watcher Knight'),key='-WATCHER-KNIGHT-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Watcher Knight')],
-                    [gui.Button(image_source=get_badge('No Eyes'),key='-NO-EYES-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('No Eyes')],
-                    [gui.Button(image_source=get_badge('Marmu'),key='-MARMU-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Marmu')],
-                    [gui.Button(image_source=get_badge('Galien'),key='-GALIEN-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Galien')]],
-                    justification='left'),
-        gui.Column([[gui.Button(image_source=get_badge('Markoth'),key='-MARKOTH-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Markoth')],
-                    [gui.Button(image_source=get_badge('Xero'),key='-XERO-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Xero')],
-                    [gui.Button(image_source=get_badge('Gorb'),key='-GORB-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Gorb')],
-                    [gui.Button(image_source=get_badge('Elder Hu'),key='-ELDER-HU-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Elder Hu')],
-                    [gui.Button(image_source=get_badge('Oro and Mato'),key='-ORO-AND-MATO-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Oro & Mato')],
-                    [gui.Button(image_source=get_badge('Paintmaster Sheo'),key='-PAINTMASTER-SHEO-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Paintmaster Sheo')],
-                    [gui.Button(image_source=get_badge('Nailsage Sly'),key='-NAILSAGE-SLY-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Nailsage Sly')],
-                    [gui.Button(image_source=get_badge('Pure Vessel'),key='-PURE-VESSEL-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Pure Vessel')],
-                    [gui.Button(image_source=get_badge('Grimm'),key='-GRIMM-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Grimm')],
-                    [gui.Button(image_source=get_badge('Nightmare King'),key='-NIGHTMARE-KING-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Nightmare King')],
-                    [gui.Button(image_source=get_badge('Radiance'),key='-RADIANCE-',button_color=gui.TRANSPARENT_BUTTON),gui.Text('Radiance')]],
-                    justification='left')]
+        [gui.Text('', key='-STATUS-')],
     ]
+    
+    for column_bosses in boss_names:
+        column_layout = [
+            [gui.Button(image_source=get_badge(boss), key=f'-{boss.replace(" ", "-").upper()}-', button_color=gui.TRANSPARENT_BUTTON), gui.Text(boss)]
+            for boss in column_bosses
+        ]
+        layout.append(gui.Column(column_layout, justification='left'))
     window = gui.Window('Hall of Gods',layout,size=(700,480),element_justification='center')
     while True:
         event, values = window.read()
