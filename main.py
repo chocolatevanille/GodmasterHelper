@@ -493,10 +493,10 @@ layout = [
         layout_pantheon
     ]
 ]
-# problem: can't get layout_bottom to appear at the bottom for some painful reason
+# note: can't get layout_bottom to appear at the bottom but it's fine at the top, maybe looks better even
 
 # window creation
-window = gui.Window('PoH Tracker', layout,size=(750,540),element_justification='center')
+window = gui.Window('GodmasterHelper', layout,size=(750,540),element_justification='center',resizable=True)
 
 # event loop
 def win_run():
