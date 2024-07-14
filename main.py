@@ -1,5 +1,5 @@
-# Author: Noëlle Barron
-# For help, contact me at william.c.b.19@gmail.com
+# Author: Noël Barron
+# For help, contact me at noelbarroncs@gmail.com
 
 import PySimpleGUI as gui
 import webbrowser 
@@ -327,12 +327,12 @@ def reset(curr_pantheon):
 # it's me!
 def display_credits():
     layout = [
-        [gui.Text("Made by Noëlle Barron",justification='center')],
+        [gui.Text("Made by Noël Barron",justification='center')],
         [gui.Column([[gui.Button('GitHub',enable_events=True,key='-GITHUB-')]],
         justification='center')]
     ]
     window = gui.Window("Credits", layout, modal=True)
-    url = 'https://github.com/chocolatevanille/PantheonofHallownestTracker'
+    url = 'https://github.com/chocolatevanille/MasterTheGods'
     while True:
         event, values = window.read()
         if event == '-GITHUB-':
@@ -423,13 +423,16 @@ def display_HoG():
         [gui.Text('Hall of Gods')],
         [gui.Text('', key='-STATUS-')],
     ]
+
+    column_list = []
     
     for column_bosses in boss_names:
         column_layout = [
             [gui.Button(image_source=get_badge(boss), key=f'-{boss.replace(" ", "-").upper()}-', button_color=gui.TRANSPARENT_BUTTON), gui.Text(boss)]
             for boss in column_bosses
         ]
-        layout.append(gui.Column(column_layout, justification='left'))
+        column_list.append(gui.Column(column_layout, justification='left'))
+    layout.append(column_list)
     window = gui.Window('Hall of Gods',layout,size=(700,480),element_justification='center')
     while True:
         event, values = window.read()
@@ -455,7 +458,7 @@ pantheon_keys = ['-POTM-SLAYER-','-POTA-SLAYER-','-POTS-SLAYER-','-POTK-SLAYER-'
 # generate new layout
 
 # window's layout design
-layout_top = [  [gui.Text("Pantheon of Hallownest Progression Tracker")]]
+layout_top = [  [gui.Text("Master The Gods of Godmaster!")]]
             
 layout_middle_left = [  [gui.Text("Who ended your run?"),
                         gui.ButtonMenu('Bosses',menu_def=poh_menu_def,border_width=5,key='-POH-SLAYER-',visible=True),
@@ -496,7 +499,7 @@ layout = [
 # note: can't get layout_bottom to appear at the bottom but it's fine at the top, maybe looks better even
 
 # window creation
-window = gui.Window('GodmasterHelper', layout,size=(750,540),element_justification='center',resizable=True)
+window = gui.Window('MasterTheGods', layout,size=(750,540),element_justification='center',resizable=True)
 
 # event loop
 def win_run():

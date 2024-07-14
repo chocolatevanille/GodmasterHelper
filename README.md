@@ -1,7 +1,7 @@
-# GodmasterHelper
+# MasterTheGods
 
 Author: Noël Barron  
-Github: https://github.com/chocolatevanille/GodmasterHelper   
+Github: https://github.com/chocolatevanille/GodmasterHelper    
 Demo: https://www.youtube.com/watch?v=Y7abImabS2Q  
 For help or bug reports, contact william.c.b.19@gmail.com. Willing to add features on request.  
 
@@ -23,4 +23,5 @@ data that is stored in the imported text file.
 
 I hope you have fun with Hollow Knight.
 
-Made with PySimpleGUI.
+Key tools: Visual Studio Code, PySimpleGUI  
+Thank you to all the developers who made this possible.
