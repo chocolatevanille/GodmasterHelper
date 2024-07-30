@@ -1,7 +1,7 @@
 # MasterTheGods
 
 Author: Noël Barron  
-Github: https://github.com/chocolatevanille/GodmasterHelper    
+Github: https://github.com/chocolatevanille/MasterTheGods    
 Demo: https://www.youtube.com/watch?v=Y7abImabS2Q  
 For help or bug reports, contact nbarroncs@gmail.com. Willing to add features on request.  
 
